@@ -57,7 +57,7 @@ curl -H 'Host: systems.home.internal' http://127.0.0.1:8084/
 | Works with JavaScript turned off | The scroll reveals are decoration. Disable them and every word is still there |
 | `prefers-reduced-motion` honoured | Motion is optional for people who need it to be |
 
-Verified at 360, 768, 1024, and 1440 CSS pixels, with WCAG AA contrast on text and controls and interactive targets of at least 44 by 44 pixels. Everything served is 616 KB, fonts and photographs included.
+Verified at 360, 768, 1024, and 1440 CSS pixels, with WCAG AA contrast on text and controls and interactive targets of at least 44 by 44 pixels. Everything served is 564 KB, fonts and photographs included.
 
 ## Checks
 
