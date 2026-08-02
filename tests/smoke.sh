@@ -8,7 +8,7 @@ systems_page="$root/public/systems/index.html"
 systems_case_study="$root/public/systems/case-study/index.html"
 systems_styles="$root/public/assets/css/systems.css"
 systems_script="$root/public/assets/js/systems.js"
-systems_image="$root/public/assets/images/inbook-server.jpg"
+systems_image="$root/public/assets/images/home-server.jpg"
 systems_icon="$root/public/assets/images/favicon.svg"
 tokens="$root/public/assets/css/tokens.css"
 
@@ -28,7 +28,7 @@ grep -Fq 'Want the engineering version?' "$systems_page"
 grep -Fq 'href="./case-study/"' "$systems_page"
 grep -Fq 'assets/css/systems.css' "$systems_page"
 grep -Fq 'assets/js/systems.js' "$systems_page"
-grep -Fq 'assets/images/inbook-server.jpg' "$systems_page"
+grep -Fq 'assets/images/home-server.jpg' "$systems_page"
 grep -Fq 'assets/images/favicon.svg' "$systems_page"
 grep -Fq 'assets/images/favicon.svg' "$systems_case_study"
 
@@ -50,11 +50,41 @@ for color in '#E8EFF2' '#101923' '#19324A' '#55C2C3' '#E05A47' '#7890A3'; do
   grep -Fiq -- "$color" "$tokens"
 done
 
-combined="$(cat "$build_page" "$systems_page" "$systems_case_study")"
-if grep -Eq '192\.168\.|100\.[0-9]+\.[0-9]+\.[0-9]+|00:e0:4c:|serveradmin|ikhwanulhakim-code' <<<"$combined"; then
-  echo 'Sensitive infrastructure detail found in public HTML.' >&2
+# The hero photograph ships at two widths, plus a social preview image.
+for image in home-server.jpg home-server-800.jpg og-image.jpg; do
+  test -f "$root/public/assets/images/$image" || {
+    echo "Missing image: $image" >&2
+    exit 1
+  }
+done
+grep -Fq 'home-server.jpg' "$systems_page" || { echo 'Landing page does not use home-server.jpg' >&2; exit 1; }
+grep -Fq 'srcset' "$systems_page" || { echo 'Landing page photo has no srcset' >&2; exit 1; }
+
+# The site names no town or region.
+if grep -riq 'south borneo' "$root" --exclude-dir=.git --exclude=smoke.sh; then
+  echo 'Location detail found. The site names no town or region.' >&2
   exit 1
 fi
+
+# Search engines and link previews need these on both pages.
+for page in "$systems_page" "$systems_case_study"; do
+  for tag in 'rel="canonical"' 'property="og:title"' 'property="og:description"' \
+             'property="og:image"' 'property="og:url"' 'name="twitter:card"' \
+             'application/ld+json' 'https://systems.ikhwanulhakim.com'; do
+    grep -Fq "$tag" "$page" || {
+      echo "Missing $tag in $page" >&2
+      exit 1
+    }
+  done
+done
+
+robots="$root/public/systems/robots.txt"
+sitemap="$root/public/systems/sitemap.xml"
+test -f "$robots"
+test -f "$sitemap"
+grep -Fq 'Sitemap: https://systems.ikhwanulhakim.com/sitemap.xml' "$robots"
+grep -Fq 'https://systems.ikhwanulhakim.com/' "$sitemap"
+grep -Fq 'https://systems.ikhwanulhakim.com/case-study/' "$sitemap"
 
 # This repository is published. Every tracked file, not only the HTML, must stay
 # free of private addresses, hardware identifiers, account names, and secrets.
