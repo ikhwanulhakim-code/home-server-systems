@@ -3,10 +3,47 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="How Ikhwanul Hakim turned a repurposed laptop into a secure, containerized home server.">
+  <meta name="description" content="Ikhwanul Hakim turned a repurposed laptop into a secure home server running Docker, Nginx, Tailscale, and Cloudflare Tunnel. The decisions, the checks, and what actually runs.">
+  <meta name="author" content="Ikhwanul Hakim">
+  <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#FF5437">
-  <title>Systems | Ikhwanul Hakim</title>
+  <title>Ikhwanul Hakim | Home Server, Docker, and DevOps Practice</title>
+  <link rel="canonical" href="https://systems.ikhwanulhakim.com/">
   <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Ikhwanul Hakim Systems">
+  <meta property="og:title" content="Old laptop. New job. A home server built and documented.">
+  <meta property="og:description" content="A repurposed laptop running Docker, Nginx, Tailscale, and Cloudflare Tunnel, with the engineering decisions written down.">
+  <meta property="og:url" content="https://systems.ikhwanulhakim.com/">
+  <meta property="og:image" content="https://systems.ikhwanulhakim.com/assets/images/og-image.jpg">
+  <meta property="og:image:alt" content="A red Infinix laptop mounted on a wall, wired by Ethernet, serving as a home server.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Old laptop. New job. A home server built and documented.">
+  <meta name="twitter:description" content="A repurposed laptop running Docker, Nginx, Tailscale, and Cloudflare Tunnel, with the engineering decisions written down.">
+  <meta name="twitter:image" content="https://systems.ikhwanulhakim.com/assets/images/og-image.jpg">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Ikhwanul Hakim",
+    "url": "https://systems.ikhwanulhakim.com/",
+    "jobTitle": "Software Engineer",
+    "sameAs": ["https://github.com/ikhwanulhakim-code"],
+    "knowsAbout": [
+      "Linux server administration",
+      "Docker",
+      "Docker Compose",
+      "Nginx reverse proxy",
+      "DevOps",
+      "Cloudflare Tunnel",
+      "Tailscale",
+      "SSH hardening",
+      "Site reliability"
+    ]
+  }
+  </script>
   <link rel="stylesheet" href="../assets/css/systems.css">
   <script src="../assets/js/systems.js"></script>
 </head>
@@ -27,7 +64,7 @@
   <main id="main">
     <section class="systems-hero" aria-labelledby="systems-title">
       <div class="systems-hero-copy">
-        <p class="systems-kicker">Home-server experiment / South Borneo</p>
+        <p class="systems-kicker">Home-server experiment / Field notes</p>
         <h1 id="systems-title" aria-label="Old laptop. New job.">Old laptop.<br>New job.</h1>
         <div class="systems-hero-bottom">
           <p>I turned an Infinix INBook X1 into a secure home server, then documented the decisions behind it.</p>
@@ -38,7 +75,11 @@
       <div class="systems-hero-art" aria-label="Photograph of the home server">
         <span class="systems-tape" aria-hidden="true"></span>
         <figure class="systems-photo-card">
-          <img src="../assets/images/inbook-server.jpg" alt="Infinix INBook X1 used as a home server, with screen details anonymized" width="1672" height="941">
+          <img src="../assets/images/home-server.jpg"
+               srcset="../assets/images/home-server-800.jpg 800w, ../assets/images/home-server.jpg 1600w"
+               sizes="(max-width: 767px) 90vw, 40vw"
+               alt="An Infinix INBook X1 laptop mounted on a wall bracket, wired by Ethernet, running a terminal session with the screen blurred"
+               width="1600" height="1200" loading="eager" decoding="async">
           <figcaption>INBOOK X1 / ACTIVE NODE</figcaption>
         </figure>
         <p class="systems-sticker" aria-hidden="true">NOT A DATA CENTER.<br><span>STILL A REAL SYSTEM.</span></p>
