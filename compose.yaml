@@ -1,3 +1,5 @@
+name: systems
+
 services:
   systems:
     image: nginx:1.28-alpine
