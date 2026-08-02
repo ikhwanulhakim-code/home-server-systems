@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Technical home-server case study by Ikhwanul Hakim, including architecture, security, delivery, and recovery decisions.">
+  <meta name="theme-color" content="#151413">
+  <title>Technical Case Study | Ikhwanul Hakim</title>
+  <link rel="icon" href="../../assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/systems.css">
+  <script src="../../assets/js/systems.js"></script>
+</head>
+<body class="systems-page systems-case-page">
+  <a class="systems-skip" href="#main">Skip to the case study</a>
+
+  <header class="systems-header systems-header-dark">
+    <a class="systems-brand" href="../" aria-label="Return to the Systems story">
+      <span>Ikhwanul Hakim</span>
+      <small>Systems</small>
+    </a>
+    <nav aria-label="Case study navigation">
+      <a href="../">Visual story</a>
+      <a href="#decisions">Decisions</a>
+      <a href="#evidence">Evidence</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="case-hero" aria-labelledby="case-title">
+      <div>
+        <p class="systems-kicker">Case study 001 / Home server</p>
+        <h1 id="case-title">Technical case study</h1>
+      </div>
+      <div class="case-hero-summary">
+        <p>A repurposed laptop became a private administration node and container host for learning practical DevOps.</p>
+        <dl class="case-facts">
+          <div><dt>Hardware</dt><dd>Infinix INBook X1</dd></div>
+          <div><dt>Platform</dt><dd>Ubuntu Server</dd></div>
+          <div><dt>State</dt><dd>Operating locally</dd></div>
+          <div><dt>Public route</dt><dd>Planned</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="case-context reveal" aria-labelledby="context-title">
+      <p class="case-section-number" aria-hidden="true">01</p>
+      <div>
+        <p class="systems-label">Context and constraints</p>
+        <h2 id="context-title">A useful system built from ordinary limits.</h2>
+        <div class="case-context-grid">
+          <p>The machine has limited resources, sits behind a home connection without a public IP, and must stay manageable during short power interruptions.</p>
+          <p>The design favors simple tools, private administration, repeatable application delivery, and recovery steps that a single operator can understand.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-paths" aria-labelledby="paths-title">
+      <header class="case-section-head reveal">
+        <p class="systems-label">Architecture</p>
+        <h2 id="paths-title">Two paths with different trust boundaries.</h2>
+        <p>Administration remains private. Selected web applications will use a separate public route.</p>
+      </header>
+
+      <article class="case-path reveal">
+        <header><div><span class="case-code">PATH / PRIVATE</span><h3>Private administration path</h3></div><span class="case-state case-state-verified">Verified</span></header>
+        <ol>
+          <li><span>01</span><strong>Trusted laptop</strong><small>Operator device</small></li>
+          <li><span>02</span><strong>Tailscale</strong><small>Private network</small></li>
+          <li><span>03</span><strong>Key-only SSH</strong><small>Authentication</small></li>
+          <li><span>04</span><strong>Ubuntu Server</strong><small>Managed host</small></li>
+        </ol>
+      </article>
+
+      <article class="case-path reveal">
+        <header><div><span class="case-code">PATH / PUBLIC</span><h3>Public application path</h3></div><span class="case-state case-state-planned">Planned</span></header>
+        <ol>
+          <li><span>01</span><strong>Visitor</strong><small>HTTPS request</small></li>
+          <li><span>02</span><strong>Cloudflare</strong><small>Public edge</small></li>
+          <li><span>03</span><strong>Host Nginx</strong><small>Hostname routing</small></li>
+          <li><span>04</span><strong>Docker app</strong><small>Local runtime</small></li>
+        </ol>
+      </article>
+    </section>
+
+    <section id="decisions" class="case-decisions" aria-labelledby="decisions-title">
+      <header class="case-section-head reveal">
+        <p class="systems-label">Engineering decisions</p>
+        <h2 id="decisions-title">Each tool answers a specific constraint.</h2>
+      </header>
+
+      <div class="case-decision-grid">
+        <article class="case-decision reveal"><span>Access / Verified</span><h3>Tailscale administration</h3><p>Remote management stays on a private network rather than exposing SSH to the public internet.</p><small>Check: access works from both home and external networks.</small></article>
+        <article class="case-decision reveal"><span>Authentication / Verified</span><h3>Ed25519 key-only SSH</h3><p>Password login is removed from the remote authentication path after the trusted key is verified.</p><small>Check: login succeeds without password fallback.</small></article>
+        <article class="case-decision reveal"><span>Boundary / Verified</span><h3>UFW allowlist</h3><p>Administrative traffic is accepted only through the home network and Tailscale interface.</p><small>Check: both approved routes recover after reboot.</small></article>
+        <article class="case-decision reveal"><span>Addressing / Verified</span><h3>Router-managed reservation</h3><p>The router provides a stable local address while keeping network allocation in one place.</p><small>Check: the same address returns after a complete reboot.</small></article>
+        <article class="case-decision reveal"><span>Runtime / Verified</span><h3>Docker Compose</h3><p>Application definitions stay repeatable, reviewable, and separate from the host operating system.</p><small>Check: lifecycle, logs, and restart behavior are verified.</small></article>
+        <article class="case-decision reveal"><span>Routing / Verified</span><h3>Host Nginx</h3><p>One entry point selects applications by hostname while container ports remain bound locally.</p><small>Check: separate hostnames reach separate containers.</small></article>
+        <article class="case-decision reveal"><span>Public web / Planned</span><h3>Cloudflare Tunnel</h3><p>Selected sites can be published without router port forwarding or a public IP.</p><small>Check: pending public HTTPS verification.</small></article>
+        <article class="case-decision reveal"><span>Power / Verified</span><h3>Battery guard</h3><p>The laptop battery covers short interruptions and preserves a safe shutdown margin.</p><small>Check: a timer evaluates discharging state and threshold.</small></article>
+      </div>
+    </section>
+
+    <section id="evidence" class="case-evidence" aria-labelledby="evidence-title">
+      <header class="case-section-head reveal">
+        <p class="systems-label">Operational evidence</p>
+        <h2 id="evidence-title">Recovery is part of the design.</h2>
+      </header>
+      <div class="case-evidence-grid">
+        <article class="reveal"><span>01</span><h3>Restart recovery</h3><p>Network, SSH, private access, firewall, and services recover after a full reboot.</p></article>
+        <article class="reveal"><span>02</span><h3>Storage health</h3><p>The NVMe health check passes without reported media or integrity errors.</p></article>
+        <article class="reveal"><span>03</span><h3>Application boundary</h3><p>Container application ports remain local and use the intended reverse-proxy entry point.</p></article>
+      </div>
+    </section>
+
+    <section class="case-lessons reveal" aria-labelledby="lessons-title">
+      <div><p class="systems-label">Lessons</p><h2 id="lessons-title">What this project demonstrates.</h2></div>
+      <ul>
+        <li>Security controls are safer when replacement access is tested first.</li>
+        <li>Simple architecture is valuable when one person must operate and recover it.</li>
+        <li>A deployment is more credible when its verification and limitations are visible.</li>
+      </ul>
+    </section>
+
+    <section class="case-next reveal" aria-labelledby="next-title">
+      <div><p class="systems-label">Next milestone</p><h2 id="next-title">Publish selected web applications safely.</h2></div>
+      <div><p>The next verified path adds the portfolio container, hostname routing, and Cloudflare Tunnel while keeping SSH private.</p><a class="systems-button systems-button-light" href="../">Return to the visual story <span aria-hidden="true">↑</span></a></div>
+    </section>
+  </main>
+
+  <footer class="systems-footer systems-footer-dark">
+    <span>Ikhwanul Hakim / Systems case study</span>
+    <span>Verified work and honest limitations</span>
+  </footer>
+</body>
+</html>
