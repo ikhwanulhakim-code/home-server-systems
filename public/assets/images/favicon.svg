@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Systems key mark">
+  <rect width="64" height="64" rx="12" fill="#FF5437"/>
+  <circle cx="25" cy="27" r="11" fill="none" stroke="#17120E" stroke-width="7"/>
+  <path d="M34 33L53 48M44 40L39 46M50 45L45 51" fill="none" stroke="#17120E" stroke-width="7" stroke-linecap="square"/>
+</svg>

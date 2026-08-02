@@ -1,0 +1,124 @@
+.content-section {
+  margin-block: var(--space-7);
+  scroll-margin-top: 2rem;
+}
+
+.systems-intro {
+  display: grid;
+  gap: var(--space-5);
+}
+
+@media (min-width: 42rem) {
+  .evidence-band,
+  .fact-grid,
+  .queue-grid,
+  .evidence-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .decision-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .record-body {
+    padding: var(--space-5);
+  }
+
+  .site-footer {
+    grid-template-columns: 1fr auto;
+    align-items: end;
+  }
+}
+
+@media (min-width: 58rem) {
+  .hero {
+    grid-template-columns: minmax(0, 1.65fr) minmax(19rem, 0.65fr);
+  }
+
+  .hero-console {
+    border-top: 0;
+    border-left: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .section-heading {
+    grid-template-columns: minmax(0, 1.1fr) minmax(20rem, 0.9fr);
+    align-items: end;
+  }
+
+  .request-path {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .request-node:not(:last-child)::after {
+    top: 1.35rem;
+    right: calc(var(--space-3) * -1 - 1px);
+    bottom: auto;
+    left: auto;
+    width: var(--space-3);
+    height: 1px;
+  }
+
+  .systems-intro {
+    grid-template-columns: 0.7fr 1.3fr;
+    align-items: start;
+  }
+}
+
+@media (max-width: 37rem) {
+  body::before {
+    width: 0.22rem;
+  }
+
+  .site-shell {
+    width: min(calc(100% - 1.25rem), var(--content));
+  }
+
+  .site-header {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+    padding-block: var(--space-3);
+  }
+
+  .view-switcher {
+    width: 100%;
+  }
+
+  .view-switcher li,
+  .view-switcher a {
+    flex: 1;
+  }
+
+  .view-switcher a {
+    justify-content: center;
+  }
+
+  .hero {
+    min-height: auto;
+  }
+
+  .hero-copy,
+  .hero-console {
+    padding: var(--space-4);
+  }
+
+  .hero-kicker {
+    margin-bottom: var(--space-6);
+  }
+
+  .hero-actions,
+  .action {
+    width: 100%;
+  }
+
+  .project-record summary {
+    grid-template-columns: 1fr auto;
+  }
+
+  .project-record summary .case-id {
+    grid-column: 1 / -1;
+  }
+
+  .content-section {
+    margin-block: var(--space-6);
+  }
+}

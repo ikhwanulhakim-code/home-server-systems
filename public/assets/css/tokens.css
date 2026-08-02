@@ -1,0 +1,30 @@
+:root {
+  color-scheme: light;
+  --canvas: #E8EFF2;
+  --ink: #101923;
+  --rack: #19324A;
+  --signal: #55C2C3;
+  --chassis: #E05A47;
+  --steel: #7890A3;
+  --surface: #F8FBFC;
+  --surface-muted: #DDE7EB;
+  --rack-soft: #25445F;
+  --line: rgba(25, 50, 74, 0.2);
+  --line-strong: rgba(25, 50, 74, 0.42);
+  --white: #FFFFFF;
+  --font-display: "Bricolage Grotesque", "Arial Narrow", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, sans-serif;
+  --font-utility: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+  --content: 76rem;
+  --reading: 68ch;
+  --radius-sm: 0.3rem;
+  --radius-md: 0.75rem;
+  --space-1: 0.375rem;
+  --space-2: 0.75rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2.25rem;
+  --space-6: 3.5rem;
+  --space-7: 5.5rem;
+  --duration: 240ms;
+}
