@@ -3,10 +3,43 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Technical home-server case study by Ikhwanul Hakim, including architecture, security, delivery, and recovery decisions.">
+  <meta name="description" content="A technical home-server case study: Docker Compose, an Nginx reverse proxy, key-only SSH, Tailscale, Cloudflare Tunnel, and the operational checks behind each decision.">
+  <meta name="author" content="Ikhwanul Hakim">
+  <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#151413">
-  <title>Technical Case Study | Ikhwanul Hakim</title>
+  <title>Home Server Case Study: Docker, Nginx, Tailscale | Ikhwanul Hakim</title>
+  <link rel="canonical" href="https://systems.ikhwanulhakim.com/case-study/">
   <link rel="icon" href="../../assets/images/favicon.svg" type="image/svg+xml">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Ikhwanul Hakim Systems">
+  <meta property="og:title" content="Home server case study: architecture, decisions, and evidence">
+  <meta property="og:description" content="Architecture, engineering decisions with reasons, operational evidence, and lessons from running a repurposed laptop as a home server.">
+  <meta property="og:url" content="https://systems.ikhwanulhakim.com/case-study/">
+  <meta property="og:image" content="https://systems.ikhwanulhakim.com/assets/images/og-image.jpg">
+  <meta property="og:image:alt" content="A red Infinix laptop mounted on a wall, wired by Ethernet, serving as a home server.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Home server case study: architecture, decisions, and evidence">
+  <meta name="twitter:description" content="Architecture, engineering decisions with reasons, operational evidence, and lessons from running a repurposed laptop as a home server.">
+  <meta name="twitter:image" content="https://systems.ikhwanulhakim.com/assets/images/og-image.jpg">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Home server case study: architecture, decisions, and evidence",
+    "description": "Architecture, engineering decisions with reasons, operational evidence, and lessons from running a repurposed laptop as a home server.",
+    "author": {
+      "@type": "Person",
+      "name": "Ikhwanul Hakim",
+      "sameAs": ["https://github.com/ikhwanulhakim-code"]
+    },
+    "datePublished": "2026-08-02",
+    "image": "https://systems.ikhwanulhakim.com/assets/images/og-image.jpg",
+    "mainEntityOfPage": "https://systems.ikhwanulhakim.com/case-study/",
+    "about": ["Home server", "Docker", "Nginx", "Tailscale", "Cloudflare Tunnel", "DevOps"]
+  }
+  </script>
   <link rel="stylesheet" href="../../assets/css/systems.css">
   <script src="../../assets/js/systems.js"></script>
 </head>
