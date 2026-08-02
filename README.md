@@ -96,7 +96,7 @@ flowchart LR
 There is no port forwarding and no public IP. The tunnel dials outward from the server, so nothing at home has to accept an inbound connection. Administration uses a separate private path and never travels this one.
 
 > [!NOTE]
-> This repository is public on purpose and holds no infrastructure detail: no addresses, hardware identifiers, account names, private hostnames, credentials, or keys. `tests/smoke.sh` scans every file for those patterns and fails when one appears. The photograph carries no location or device metadata.
+> This repository is public on purpose and holds no infrastructure detail: no addresses, hardware identifiers, account names, private hostnames, credentials, or keys. `tests/smoke.sh` scans every file for those patterns and fails when one appears. The photograph carries no location or device metadata, and the account name on the laptop screen is blurred.
 
 ## Colour and type
 
