@@ -50,6 +50,12 @@ done
 grep -Fq 'home-server.jpg' "$landing" || { echo 'Landing page does not use home-server.jpg' >&2; exit 1; }
 grep -Fq 'srcset' "$landing" || { echo 'Landing page photo has no srcset' >&2; exit 1; }
 
+# Scroll reveals fade in. The hidden state is applied by the script rather than
+# by a stylesheet, so a JavaScript failure leaves every section readable.
+grep -Fq 'is-armed' "$script" || { echo 'The reveal script does not arm sections before observing them' >&2; exit 1; }
+grep -Fq '.reveal.is-armed' "$styles" || { echo 'No armed reveal rule in the stylesheet' >&2; exit 1; }
+grep -A4 '\.reveal\.is-armed' "$styles" | grep -q 'opacity' || { echo 'The armed reveal rule does not fade' >&2; exit 1; }
+
 # The site names no town or region.
 if grep -riq 'south borneo' "$root" --exclude-dir=.git --exclude=smoke.sh; then
   echo 'Location detail found. The site names no town or region.' >&2

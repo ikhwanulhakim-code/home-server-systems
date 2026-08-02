@@ -21,5 +21,9 @@ document.addEventListener("DOMContentLoaded", () => {
     { rootMargin: "0px 0px -8%", threshold: 0.08 }
   );
 
-  sections.forEach((section) => observer.observe(section));
+  // Hide the sections only once the observer exists to reveal them again.
+  sections.forEach((section) => {
+    section.classList.add("is-armed");
+    observer.observe(section);
+  });
 });
