@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Selected software builds and delivery evidence from Ikhwanul Hakim.">
+  <title>Builds | Ikhwanul Hakim</title>
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/views.css">
+  <script src="../assets/js/viewer.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header site-shell">
+    <a class="identity" href="./" aria-label="Ikhwanul Hakim, Build view">
+      <span class="identity-mark" aria-hidden="true">IH</span>
+      <span class="identity-copy">
+        <span class="identity-name">Ikhwanul Hakim</span>
+        <span class="identity-role">Engineering viewer</span>
+      </span>
+    </a>
+
+    <nav aria-label="Portfolio views">
+      <ul class="view-switcher">
+        <li><a href="./" aria-current="page">Build</a></li>
+        <li><a href="../systems/">Systems</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="site-shell">
+    <section class="hero" aria-labelledby="build-title">
+      <div class="hero-copy">
+        <div>
+          <p class="hero-kicker">Build view / Product to delivery</p>
+          <h1 id="build-title">I turn unclear problems into working software.</h1>
+          <p class="hero-lede">Product thinking, application engineering, and delivery evidence from projects I can explain end to end.</p>
+          <div class="hero-actions">
+            <a class="action action-primary" href="#selected-builds">Explore selected builds</a>
+            <a class="action" href="../systems/">See how the systems work</a>
+          </div>
+        </div>
+
+        <div class="evidence-band" aria-label="Professional focus">
+          <span>Product thinking</span>
+          <span>Software engineering</span>
+          <span>Delivery ownership</span>
+        </div>
+      </div>
+
+      <aside class="hero-console" aria-label="Build evidence summary">
+        <div>
+          <div class="console-title">
+            <span>Evidence index</span>
+            <span class="console-light" aria-label="Active"></span>
+          </div>
+          <dl class="console-list">
+            <div class="console-row">
+              <dt>Case studies</dt>
+              <dd>02</dd>
+            </div>
+            <div class="console-row">
+              <dt>Active lab</dt>
+              <dd>01</dd>
+            </div>
+            <div class="console-row">
+              <dt>Build queue</dt>
+              <dd>03</dd>
+            </div>
+          </dl>
+        </div>
+        <p class="footer-note">Proof before badges. Decisions before tool lists.</p>
+      </aside>
+    </section>
+
+    <section id="selected-builds" class="content-section" aria-labelledby="selected-builds-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">Selected builds</p>
+          <h2 id="selected-builds-title">Work with a traceable reason.</h2>
+        </div>
+        <p>Each case records the problem, constraints, decisions, and evidence. Expand a record to inspect what was actually learned and verified.</p>
+      </div>
+
+      <div class="project-stack">
+        <details class="project-record" open>
+          <summary>
+            <span class="case-id">Case / Home-01</span>
+            <span class="project-title">Home Server Lab</span>
+            <span class="state state-progress">In progress</span>
+          </summary>
+          <div class="record-body">
+            <p class="record-summary">Repurposing an Infinix INBook X1 into a secure application server for websites, experiments, private storage, and deployment automation.</p>
+            <dl class="fact-grid">
+              <div class="fact">
+                <dt>Problem</dt>
+                <dd>Build real infrastructure experience using available hardware and a home network.</dd>
+              </div>
+              <div class="fact">
+                <dt>Constraint</dt>
+                <dd>No public IP, limited resources, and occasional power outages.</dd>
+              </div>
+              <div class="fact">
+                <dt>Evidence</dt>
+                <dd>Private access, firewall rules, containers, reverse proxy, reboot checks, and safe shutdown are verified.</dd>
+              </div>
+            </dl>
+            <ul class="tag-list" aria-label="Home Server Lab technologies">
+              <li>Ubuntu Server</li>
+              <li>Docker Compose</li>
+              <li>Nginx</li>
+              <li>Tailscale</li>
+              <li>UFW</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="project-record">
+          <summary>
+            <span class="case-id">Case / Web-01</span>
+            <span class="project-title">Hello Web</span>
+            <span class="state state-running">Running locally</span>
+          </summary>
+          <div class="record-body">
+            <p class="record-summary">A deliberately small containerized website used to verify the full application path before deploying something larger.</p>
+            <dl class="fact-grid">
+              <div class="fact">
+                <dt>Purpose</dt>
+                <dd>Learn container lifecycle and routing with the smallest useful application.</dd>
+              </div>
+              <div class="fact">
+                <dt>Boundary</dt>
+                <dd>The application port stays local to the server instead of being exposed to the home network.</dd>
+              </div>
+              <div class="fact">
+                <dt>Evidence</dt>
+                <dd>Compose lifecycle, logs, reverse-proxy selection, and browser access were tested.</dd>
+              </div>
+            </dl>
+            <ul class="tag-list" aria-label="Hello Web technologies">
+              <li>HTML</li>
+              <li>Docker</li>
+              <li>Nginx</li>
+              <li>Hostname routing</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="queue-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">Build queue</p>
+          <h2 id="queue-title">Next work, labeled honestly.</h2>
+        </div>
+        <p>These are planned engineering experiments, not completed projects. Each one extends the same server into a more reliable delivery platform.</p>
+      </div>
+
+      <div class="queue-grid">
+        <article class="queue-card">
+          <span class="state state-planned">Planned</span>
+          <h3>Reviewed deployments</h3>
+          <p>A restricted GitHub Actions runner with deployment verification and a rollback path.</p>
+        </article>
+        <article class="queue-card">
+          <span class="state state-planned">Planned</span>
+          <h3>Private storage</h3>
+          <p>A dedicated data volume with file synchronization and a restore test.</p>
+        </article>
+        <article class="queue-card">
+          <span class="state state-planned">Planned</span>
+          <h3>Operations</h3>
+          <p>Health checks, resource limits, monitoring, and alerts that lead to a clear action.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer site-shell">
+    <div>
+      <strong>Ikhwanul Hakim</strong>
+      <p>Product thinking, software engineering, and systems ownership.</p>
+    </div>
+    <p class="footer-note">BUILD VIEW / Evidence over decoration</p>
+  </footer>
+</body>
+</html>
