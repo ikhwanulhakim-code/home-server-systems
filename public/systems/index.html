@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="How Ikhwanul Hakim turned a repurposed laptop into a secure, containerized home server.">
+  <meta name="theme-color" content="#FF5437">
+  <title>Systems | Ikhwanul Hakim</title>
+  <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/systems.css">
+  <script src="../assets/js/systems.js"></script>
+</head>
+<body class="systems-page systems-landing">
+  <a class="systems-skip" href="#main">Skip to the story</a>
+
+  <header class="systems-header">
+    <a class="systems-brand" href="./" aria-label="Ikhwanul Hakim Systems home">
+      <span>Ikhwanul Hakim</span>
+      <small>Systems</small>
+    </a>
+    <nav aria-label="Systems navigation">
+      <a href="#story">Story</a>
+      <a href="./case-study/">Technical case study</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="systems-hero" aria-labelledby="systems-title">
+      <div class="systems-hero-copy">
+        <p class="systems-kicker">Home-server experiment / South Borneo</p>
+        <h1 id="systems-title" aria-label="Old laptop. New job.">Old laptop.<br>New job.</h1>
+        <div class="systems-hero-bottom">
+          <p>I turned an Infinix INBook X1 into a secure home server, then documented the decisions behind it.</p>
+          <a class="systems-scroll-cue" href="#story" aria-label="Continue to the story">↓</a>
+        </div>
+      </div>
+
+      <div class="systems-hero-art" aria-label="Photograph of the home server">
+        <span class="systems-tape" aria-hidden="true"></span>
+        <figure class="systems-photo-card">
+          <img src="../assets/images/inbook-server.jpg" alt="Infinix INBook X1 used as a home server, with screen details anonymized" width="1672" height="941">
+          <figcaption>INBOOK X1 / ACTIVE NODE</figcaption>
+        </figure>
+        <p class="systems-sticker" aria-hidden="true">NOT A DATA CENTER.<br><span>STILL A REAL SYSTEM.</span></p>
+      </div>
+    </section>
+
+    <section id="story" class="systems-premise reveal" aria-labelledby="premise-title">
+      <p class="systems-index" aria-hidden="true">01</p>
+      <div>
+        <p class="systems-label">The premise</p>
+        <h2 id="premise-title">The interesting part is not the laptop. It is the system built around its limitations.</h2>
+      </div>
+    </section>
+
+    <section class="systems-chapters" aria-labelledby="chapters-title">
+      <header class="systems-section-head reveal">
+        <div>
+          <p class="systems-label">The short version</p>
+          <h2 id="chapters-title">Three problems. Three practical answers.</h2>
+        </div>
+        <p>Scan the story here. Open the case study when you want the engineering evidence.</p>
+      </header>
+
+      <div class="systems-chapter-grid">
+        <article class="systems-chapter systems-chapter-access reveal">
+          <header><span>01 / Access</span><span>Private</span></header>
+          <div class="systems-key-illustration" aria-hidden="true"><i></i><b></b></div>
+          <div>
+            <h3>A door without a public keyhole.</h3>
+            <p>My laptop reaches the server through trusted SSH keys and a private Tailscale network.</p>
+            <span class="systems-tool-note">SSH keys / Tailscale / UFW</span>
+          </div>
+        </article>
+
+        <article class="systems-chapter systems-chapter-delivery reveal">
+          <header><span>02 / Delivery</span><span>Repeatable</span></header>
+          <div class="systems-route-illustration" aria-label="A web request travels through Nginx to an application">
+            <span>WEB</span><i aria-hidden="true"></i><span>NGX</span><i aria-hidden="true"></i><span>APP</span>
+          </div>
+          <div>
+            <h3>One address. The right application.</h3>
+            <p>Nginx routes each hostname while Docker keeps every application contained.</p>
+            <span class="systems-tool-note">Docker Compose / Nginx</span>
+          </div>
+        </article>
+
+        <article class="systems-chapter systems-chapter-continuity reveal">
+          <header><span>03 / Continuity</span><span>Resilient</span></header>
+          <div class="systems-battery-illustration" aria-hidden="true"><i></i></div>
+          <div>
+            <h3>Designed for imperfect power.</h3>
+            <p>Ethernet comes first, Wi-Fi can return when needed, and the battery protects short outages.</p>
+            <span class="systems-tool-note">Network priority / Battery guard</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="systems-proof" aria-label="Verified system capabilities">
+      <article class="reveal"><strong>Key-only SSH</strong><span>Remote access</span></article>
+      <article class="reveal"><strong>Tailscale + UFW</strong><span>Network boundary</span></article>
+      <article class="reveal"><strong>Docker + Nginx</strong><span>Application delivery</span></article>
+      <article class="reveal"><strong>Documented recovery</strong><span>Operational thinking</span></article>
+    </section>
+
+    <section class="systems-detail-invite reveal" aria-labelledby="detail-title">
+      <div>
+        <p class="systems-label">For engineers and curious people</p>
+        <h2 id="detail-title">Want the engineering version?</h2>
+      </div>
+      <div>
+        <p>The full case study covers architecture, trust boundaries, decisions, verification, and what is still planned.</p>
+        <a class="systems-button" href="./case-study/">Open technical case study <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="systems-footer">
+    <span>Built and operated by Ikhwanul Hakim</span>
+    <span>2026 / Ongoing experiment</span>
+  </footer>
+</body>
+</html>
