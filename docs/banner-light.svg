@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 320" width="1280" height="320" role="img" aria-label="Systems. An old laptop doing real work.">
+  <rect width="1280" height="320" fill="#F2E8D6"/>
+  <rect width="560" height="320" fill="#FF5437"/>
+
+  <g font-family="Helvetica Neue, Helvetica, Arial, sans-serif" fill="#17120E">
+    <text x="56" y="190" font-size="118" font-weight="800" letter-spacing="-4">Systems</text>
+    <text x="60" y="238" font-size="15" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" letter-spacing="2.5" opacity="0.75">OLD LAPTOP. NEW JOB.</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" fill="#17120E">
+    <text x="632" y="108" font-size="14" letter-spacing="2.5" opacity="0.6">HOME-SERVER EXPERIMENT / SOUTH BORNEO</text>
+    <text x="632" y="152" font-size="17" letter-spacing="0.5">docker &#183; nginx &#183; tailscale &#183; cloudflare tunnel</text>
+    <text x="632" y="180" font-size="17" letter-spacing="0.5">no framework &#183; no build step &#183; 64 MB</text>
+  </g>
+
+  <g transform="translate(632 208) rotate(-1.4)">
+    <rect width="352" height="46" fill="#151413"/>
+    <text x="16" y="30" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" letter-spacing="1.5" fill="#F2E8D6">NOT A DATA CENTER.</text>
+    <text x="220" y="30" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" letter-spacing="1.5" fill="#FF5437">STILL REAL.</text>
+  </g>
+
+  <rect x="0" y="308" width="1280" height="12" fill="#17120E"/>
+</svg>
