@@ -64,12 +64,17 @@ private_pattern="$private_pattern"'|([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}|serveradm
 private_pattern="$private_pattern"'|BEGIN [A-Z ]*PRIVATE KEY'
 private_pattern="$private_pattern"'|(PASSWORD|SECRET|API_KEY|ACCESS_KEY|AUTH_TOKEN)[[:space:]]*=[[:space:]]*[^[:space:]]'
 
+# The GitHub account name matches the server hostname, so the repository's own
+# clone URL is not a leak.
+allowed='github\.com/ikhwanulhakim-code'
+
 leaks="$(
   find "$root" \
     -path "$root/.git" -prune -o \
     -path "$root/tests/smoke.sh" -prune -o \
     -type f -print |
-  xargs grep -lIE "$private_pattern" 2>/dev/null || true
+  xargs grep -nIE "$private_pattern" 2>/dev/null |
+  grep -vE "$allowed" || true
 )"
 if [ -n "$leaks" ]; then
   echo 'Sensitive infrastructure detail found in published files:' >&2
