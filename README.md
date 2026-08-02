@@ -22,8 +22,8 @@ This site is the write-up. It has two pages, because two very different people o
 
 | Route | Reader | What they get |
 |---|---|---|
-| `/systems/` | Anyone, including non-engineers | A thirty second visual story: the problem, three practical answers, and what actually runs |
-| `/systems/case-study/` | Engineers and interviewers | Architecture, decisions with reasons, operational evidence, lessons, and planned work |
+| `/` | Anyone, including non-engineers | A thirty second visual story: the problem, three practical answers, and what actually runs |
+| `/case-study/` | Engineers and interviewers | Architecture, decisions with reasons, operational evidence, lessons, and planned work |
 
 Splitting them was the main content decision. A recruiter should not have to scroll past a container configuration to understand the project, and an engineer should not have to guess at the details.
 
@@ -37,7 +37,7 @@ cd home-server-systems
 python3 -m http.server 4173 --bind 127.0.0.1 --directory public
 ```
 
-Open `http://127.0.0.1:4173/systems/`.
+Open `http://127.0.0.1:4173/`.
 
 To run the real serving setup instead of a plain file server:
 
@@ -66,7 +66,7 @@ Verified at 360, 768, 1024, and 1440 CSS pixels, with WCAG AA contrast on text a
 ./tests/container-smoke.sh  # running container, routes, loopback binding
 ```
 
-Plain shell, no test framework, both finish in under a second. The container check asserts the things that are easy to get wrong: an unknown hostname returns 404, the deferred Build view is unreachable, and port 8084 listens on nothing but the loopback address.
+Plain shell, no test framework, both finish in under a second. The container check asserts the things that are easy to get wrong: an unknown hostname returns 404, the health endpoint answers, and port 8084 listens on nothing but the loopback address.
 
 <details>
 <summary>Repository layout</summary>
@@ -75,7 +75,8 @@ Plain shell, no test framework, both finish in under a second. The container che
 compose.yaml        Container definition
 nginx/              Server configuration used inside the container
 public/             Everything that is served
-  systems/          Landing page and case study
+  index.html        Landing page
+  case-study/       Technical case study
   assets/           CSS, JavaScript, self-hosted fonts, images
 tests/              Shell checks
 tools/              Script that composes the social preview image

@@ -32,11 +32,11 @@ grep -Fq 'Technical case study' <<<"$(fetch_body /case-study/ "$host")" ||
   fail "$host /case-study/ did not return the case study"
 
 # Shared assets live outside the document root and need their own location.
-for asset in /assets/css/systems.css /assets/js/systems.js /assets/images/home-server.jpg; do
+for asset in /assets/css/systems.css /assets/js/systems.js /assets/images/home-server.jpg /robots.txt /sitemap.xml; do
   [ "$(fetch_status "$asset" "$host")" = '200' ] || fail "$asset did not return 200"
 done
 
-# The deferred Build view must not be reachable through this container.
+# The deferred Build view is not part of this site.
 [ "$(fetch_status /build/ "$host")" = '404' ] || fail '/build/ is reachable'
 
 # An unknown hostname gets no content.

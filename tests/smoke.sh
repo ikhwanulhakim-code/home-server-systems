@@ -3,51 +3,41 @@ set -euo pipefail
 
 root="${1:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
 
-build_page="$root/public/build/index.html"
-systems_page="$root/public/systems/index.html"
-systems_case_study="$root/public/systems/case-study/index.html"
-systems_styles="$root/public/assets/css/systems.css"
-systems_script="$root/public/assets/js/systems.js"
-systems_image="$root/public/assets/images/home-server.jpg"
-systems_icon="$root/public/assets/images/favicon.svg"
-tokens="$root/public/assets/css/tokens.css"
+landing="$root/public/index.html"
+case_study="$root/public/case-study/index.html"
+styles="$root/public/assets/css/systems.css"
+script="$root/public/assets/js/systems.js"
+photo="$root/public/assets/images/home-server.jpg"
+icon="$root/public/assets/images/favicon.svg"
+robots="$root/public/robots.txt"
+sitemap="$root/public/sitemap.xml"
 
-test -f "$build_page"
-test -f "$systems_page"
-test -f "$systems_case_study"
-test -f "$systems_styles"
-test -f "$systems_script"
-test -f "$systems_image"
-test -f "$systems_icon"
-test -f "$tokens"
-
-grep -Fq 'I turn unclear problems into working software.' "$build_page"
-grep -Fq 'Old laptop. New job.' "$systems_page"
-grep -Fq 'Three problems. Three practical answers.' "$systems_page"
-grep -Fq 'Want the engineering version?' "$systems_page"
-grep -Fq 'href="./case-study/"' "$systems_page"
-grep -Fq 'assets/css/systems.css' "$systems_page"
-grep -Fq 'assets/js/systems.js' "$systems_page"
-grep -Fq 'assets/images/home-server.jpg' "$systems_page"
-grep -Fq 'assets/images/favicon.svg' "$systems_page"
-grep -Fq 'assets/images/favicon.svg' "$systems_case_study"
-
-for phrase in 'Home Server Lab' 'Hello Web' 'Build queue'; do
-  grep -Fq "$phrase" "$build_page"
+for file in "$landing" "$case_study" "$styles" "$script" "$photo" "$icon" "$robots" "$sitemap"; do
+  test -f "$file" || { echo "Missing file: $file" >&2; exit 1; }
 done
+
+# The document root holds the Systems view alone. The Build view is deferred.
+if [ -e "$root/public/build" ]; then
+  echo 'The deferred Build view is inside the served directory.' >&2
+  exit 1
+fi
+
+grep -Fq 'Old laptop. New job.' "$landing"
+grep -Fq 'Three problems. Three practical answers.' "$landing"
+grep -Fq 'Want the engineering version?' "$landing"
+grep -Fq 'href="./case-study/"' "$landing"
+grep -Fq 'assets/css/systems.css' "$landing"
+grep -Fq 'assets/js/systems.js' "$landing"
+grep -Fq 'assets/images/favicon.svg' "$landing"
 
 for phrase in 'Technical case study' 'Private administration path' 'Engineering decisions' 'Operational evidence'; do
-  grep -Fq "$phrase" "$systems_case_study"
+  grep -Fq "$phrase" "$case_study"
 done
-
-grep -Fq 'href="../"' "$systems_case_study"
+grep -Fq 'href="../"' "$case_study"
+grep -Fq 'assets/images/favicon.svg' "$case_study"
 
 for color in '#17120E' '#F2E8D6' '#FF5437' '#70CBEA' '#F5D84F' '#151413'; do
-  grep -Fiq -- "$color" "$systems_styles"
-done
-
-for color in '#E8EFF2' '#101923' '#19324A' '#55C2C3' '#E05A47' '#7890A3'; do
-  grep -Fiq -- "$color" "$tokens"
+  grep -Fiq -- "$color" "$styles"
 done
 
 # The hero photograph ships at two widths, plus a social preview image.
@@ -57,8 +47,8 @@ for image in home-server.jpg home-server-800.jpg og-image.jpg; do
     exit 1
   }
 done
-grep -Fq 'home-server.jpg' "$systems_page" || { echo 'Landing page does not use home-server.jpg' >&2; exit 1; }
-grep -Fq 'srcset' "$systems_page" || { echo 'Landing page photo has no srcset' >&2; exit 1; }
+grep -Fq 'home-server.jpg' "$landing" || { echo 'Landing page does not use home-server.jpg' >&2; exit 1; }
+grep -Fq 'srcset' "$landing" || { echo 'Landing page photo has no srcset' >&2; exit 1; }
 
 # The site names no town or region.
 if grep -riq 'south borneo' "$root" --exclude-dir=.git --exclude=smoke.sh; then
@@ -67,7 +57,7 @@ if grep -riq 'south borneo' "$root" --exclude-dir=.git --exclude=smoke.sh; then
 fi
 
 # Search engines and link previews need these on both pages.
-for page in "$systems_page" "$systems_case_study"; do
+for page in "$landing" "$case_study"; do
   for tag in 'rel="canonical"' 'property="og:title"' 'property="og:description"' \
              'property="og:image"' 'property="og:url"' 'name="twitter:card"' \
              'application/ld+json' 'https://systems.ikhwanulhakim.com'; do
@@ -78,10 +68,6 @@ for page in "$systems_page" "$systems_case_study"; do
   done
 done
 
-robots="$root/public/systems/robots.txt"
-sitemap="$root/public/systems/sitemap.xml"
-test -f "$robots"
-test -f "$sitemap"
 grep -Fq 'Sitemap: https://systems.ikhwanulhakim.com/sitemap.xml' "$robots"
 grep -Fq 'https://systems.ikhwanulhakim.com/' "$sitemap"
 grep -Fq 'https://systems.ikhwanulhakim.com/case-study/' "$sitemap"
