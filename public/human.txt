@@ -1,3 +1,3 @@
-This site runs on a repurposed laptop in South Borneo.
+This site runs on a repurposed laptop.
 It documents the software, systems, and decisions behind the experiment.
 Built to learn in public, without publishing private infrastructure details.

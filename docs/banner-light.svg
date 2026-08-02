@@ -8,7 +8,7 @@
   </g>
 
   <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" fill="#17120E">
-    <text x="632" y="108" font-size="14" letter-spacing="2.5" opacity="0.6">HOME-SERVER EXPERIMENT / SOUTH BORNEO</text>
+    <text x="632" y="108" font-size="14" letter-spacing="2.5" opacity="0.6">HOME-SERVER EXPERIMENT / FIELD NOTES</text>
     <text x="632" y="152" font-size="17" letter-spacing="0.5">docker &#183; nginx &#183; tailscale &#183; cloudflare tunnel</text>
     <text x="632" y="180" font-size="17" letter-spacing="0.5">no framework &#183; no build step &#183; 64 MB</text>
   </g>

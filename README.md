@@ -1,6 +1,6 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/banner-dark.svg">
-  <img alt="Systems. Old laptop, new job. A home server experiment from South Borneo." src="docs/banner-light.svg">
+  <img alt="Systems. Old laptop, new job. A documented home server experiment." src="docs/banner-light.svg">
 </picture>
 
 ![License MIT](https://img.shields.io/badge/license-MIT-FF5437?style=flat-square&labelColor=17120E)
