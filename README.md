@@ -78,6 +78,7 @@ public/             Everything that is served
   systems/          Landing page and case study
   assets/           CSS, JavaScript, self-hosted fonts, images
 tests/              Shell checks
+tools/              Script that composes the social preview image
 docs/               Banner and screenshots for this README
 ```
 
